@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PinterestLike</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f4f8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .payment-box {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+        color: #00796b;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        font-weight: bold;
+        color: #444;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      select,
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #bbb;
+        border-radius: 6px;
+        font-size: 16px;
+      }
+
+      .upi-id-container {
+        display: flex;
+        gap: 5px;
+      }
+
+      .upi-id-container input[type="text"]:first-child {
+        flex: 1;
+      }
+
+      .upi-id-container input[type="text"]:last-child {
+        width: 70px;
+        background: #f0f0f0;
+        border: 1px solid #ccc;
+      }
+
+      button {
+        width: 100%;
+        background-color: #4caf50;
+        color: white;
+        padding: 12px;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #388e3c;
+      }
+
+      .how-to {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 14px;
+      }
+
+      .success-message {
+        color: #388e3c;
+        font-weight: bold;
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .error-message {
+        color: red;
+        font-weight: bold;
+        margin-top: 20px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="payment-box">
+      <h2>UPI / BHIM Payment</h2>
+
+      <form id="upi-form">
+        <div class="form-group">
+          <label for="upi-app">Select your UPI app</label>
+          <select id="upi-app" required>
+            <option value="bhim">BHIM</option>
+            <option value="phonepe">PhonePe</option>
+            <option value="paytm">Paytm</option>
+            <option value="gpay">Google Pay</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="upi-id">Enter your UPI ID</label>
+          <div class="upi-id-container">
+            <input type="text" id="upi-user" placeholder="yourname" required />
+            <input type="text" id="upi-suffix" value="@upi" readonly />
+          </div>
+        </div>
+
+        <button type="submit">Verify & Pay</button>
+      </form>
+
+      <div class="how-to">
+        <a href="#">How to pay using UPI?</a>
+      </div>
+
+      <div id="success-msg" class="success-message" style="display: none">
+        Payment verified successfully! Your order has been placed!
+      </div>
+      <div id="error-msg" class="error-message" style="display: none"></div>
+    </div>
+
+    <script>
+      document
+        .getElementById("upi-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const user = document.getElementById("upi-user").value.trim();
+          const suffix = document.getElementById("upi-suffix").value;
+          const upiId = user + suffix;
+          const app = document.getElementById("upi-app").value;
+          const validApps = ["bhim", "phonepe", "paytm", "gpay"];
+          const upiPattern = /^[a-zA-Z0-9.\-_]{2,}@[\w.-]+$/;
+
+          const successMsg = document.getElementById("success-msg");
+          const errorMsg = document.getElementById("error-msg");
+          successMsg.style.display = "none";
+          errorMsg.style.display = "none";
+
+          if (!user) {
+            errorMsg.textContent = "Please enter your UPI ID.";
+            errorMsg.style.display = "block";
+            return;
+          }
+
+          if (!upiPattern.test(upiId)) {
+            errorMsg.textContent = "Invalid UPI ID format.";
+            errorMsg.style.display = "block";
+            return;
+          }
+
+          if (!validApps.includes(app)) {
+            errorMsg.textContent = "Selected UPI app is not supported.";
+            errorMsg.style.display = "block";
+            return;
+          }
+
+          // Simulate "verifying..."
+          setTimeout(() => {
+            alert(`Payment initiated for UPI ID: ${upiId}`);
+            successMsg.style.display = "block";
+
+            setTimeout(() => {
+              window.location.href = "delivery.html";
+            }, 3000);
+          }, 1000); // 1 second delay to mimic API call
+        });
+    </script>
+  </body>
+</html>

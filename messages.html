@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PinterestLike</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="top-icons">
+        <a href="home.html" class="icon">
+          <img src="https://img.icons8.com/color/48/pinterest--v1.png" alt="Pin" />
+        </a>
+        <a href="home.html" class="icon">
+          <img src="https://img.icons8.com/ios-filled/50/home.png" alt="Home" />
+        </a>
+        <a href="explore.html" class="icon">
+          <img
+            src="https://static-00.iconduck.com/assets.00/explore-icon-512x512-znt7vcm6.png"
+            alt="Explore"
+          />
+        </a>
+        <a href="create.html" class="icon">
+          <img
+            src="https://img.icons8.com/ios/50/000000/plus-math.png"
+            alt="Add"
+          />
+        </a>
+        <a href="update.html" class="icon notification-wrapper">
+          <img
+            src="https://img.icons8.com/ios/50/000000/appointment-reminders--v1.png"
+            alt="Notifications"
+          />
+          <span class="badge">25</span>
+        </a>
+        <a href="messages.html" class="icon notification-wrapper">
+          <img
+            src="https://img.icons8.com/ios/50/000000/chat.png"
+            alt="Messages"
+          />
+          <span class="badge">1</span>
+        </a>
+        <a href="shop.html" class="icon">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3zPZUyqf4_npQLXo3vrbopOSm_GYIptEzFg&s"
+            alt="Shop"
+          />
+          <span class="badge">New</span>
+        </a>
+      </div>
+      <a href="settings.html" class="bottom-icon">
+        <div class="icon">
+          <img
+            src="https://img.icons8.com/ios/50/000000/settings.png"
+            alt="Settings"
+          />
+        </div>
+      </a>
+    </div>
+    <div class="main-content">
+      <div class="header">
+        <div class="search-bar">
+          <input type="text" placeholder="Search" />
+        </div>
+        <a href="user.html" class="user">
+          <img
+            src="data:image/png;base64,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"
+            alt="User"
+          />
+        </a>
+      </div>
+      <div class="messages-panel">
+        <div class="header">
+          <span class="close-btn">✕</span>
+          <h2>Messages</h2>
+          <span class="menu-btn">⋯</span>
+        </div>
+
+        <div class="new-message">
+          <div class="icon red-bg">✎</div>
+          <span>New message</span>
+        </div>
+
+        <h4>Messages</h4>
+        <div class="message-item">
+          <img
+            src="https://img.icons8.com/color/48/pinterest--v1.png"
+            alt="Pinterest India"
+          />
+          <div class="message-text">
+            <strong>Pinterest India</strong>
+            <span>Sent a Pin</span>
+          </div>
+          <span class="time">1y</span>
+        </div>
+
+        <h4>Suggested</h4>
+        <div class="suggested-item">
+          <div class="avatar">M</div>
+          <div class="suggested-text">
+            <strong>Madelynn Kensley</strong>
+            <span>@Delynn169</span>
+          </div>
+        </div>
+
+        <div class="suggested-item">
+          <div class="avatar">A</div>
+          <div class="suggested-text">
+            <strong>Amy</strong>
+            <span>@guptaamrita0912</span>
+          </div>
+        </div>
+
+        <div class="suggested-item">
+          <div class="avatar">➕</div>
+          <div class="suggested-text">
+            <strong>Invite your friends</strong>
+            <span>Connect to start chatting</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
